@@ -1,0 +1,14 @@
+<h1 *ngIf="control">Recupero task...</h1>
+<ng-container  *ngIf="!control">
+  <h1 class="h1 text-center" *ngIf="this.arrayTask.length<1">Non ci sono task</h1>
+  <div class="container d-flex  flex-column w-25">
+
+    <ul class="list-group mt-4">
+      <div *ngIf="this.arrayTask.length>0"></div>
+      <li class="list-group-item text-center" *ngFor="let x of this.arrayTask">{{x.title}}<input class="form-check-input" (click)="aggiungiCompl(x.id)" type="checkbox" value="" id="flexCheckDefault"></li>
+      <li *ngIf="caricamento" class="list-group-item text-center">...</li>
+    </ul>
+    <input type="text" class="form-control mt-5 text-center" placeholder="Inserisci la tua task..." [(ngModel)]="task">
+    <button class="btn btn-primary mt-2" (click)="aggiungiTask(task)">+</button>
+  </div>
+</ng-container>
